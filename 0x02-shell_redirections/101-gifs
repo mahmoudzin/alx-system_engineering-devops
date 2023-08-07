@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Find all .gif files, including hidden ones, in current directory and sub-directories
+files=$(find . -type f -name "*.gif" -printf "%f\n")
+
+# Loop through each file
+for file in $files; do
+  # Remove the .gif extension and convert to lowercase
+  file_name=$(echo "$file" | sed 's/\.gif$//' | tr '[:upper:]' '[:lower:]')
+  echo "$file_name"
+done | LC_ALL=C sort -f
+
+echo
